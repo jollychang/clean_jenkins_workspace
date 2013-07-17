@@ -1,5 +1,5 @@
 function cleanjenkinsworkspace() {
-    find /data/jenkins/workspace -maxdepth 1 -mmin +30 -print -type d | xargs rm -rf
+    find /data/jenkins/workspace -mindepth 1 -maxdepth 1 -mmin +30 -print -type d | xargs rm -rf
 
 }
 
