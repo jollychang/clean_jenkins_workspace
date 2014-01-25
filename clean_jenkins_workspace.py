@@ -18,4 +18,7 @@ for workspace in ws:
     if workspace not in jobnames:
     	workspace_path = os.path.join(jenkins_workspace_path, workspace)
         print "remove dir: %s " % workspace_path
-        rmtree(workspace_path)
+        if os.path.islink(workspace_path):
+            os.unlink(workspace_path)
+        else:
+            rmtree(workspace_path)
